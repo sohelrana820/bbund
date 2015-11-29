@@ -1,53 +1,49 @@
-.margin-top-100{
-    margin-top: 100px;
+body{
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-h2{
-    margin: 0px;
-    text-transform: uppercase;
+.body_color{
+    background: #483D8B;
 }
 
-.panel-title{
-    text-transform: uppercase;
+.login_form .form-control{
+    border: 0px;
+    background: none;
+    border-bottom: 2px solid #FFF;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #FFF;
     font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.field_url{
-    height: 50px;
-    width: 100%;
+.login_form .form-group{
     margin-bottom: 50px;
-    padding: 0px 25px;
+}
+
+
+.btn-circle{
+    background: none;
+    border: 2px solid #FFF;
+    color: #FFF;
+    padding: 10px 25px;
     border-radius: 50px;
-    border: 1px solid #EEE;
+    font-size: 18px;
 }
 
-.preview_img{
-    margin: 25px 0px;
-}
 
-.ajax_loader{
+.slogan{
     text-align: center;
+    color: #FFF;
+    margin-bottom: 70px;
 }
 
-.ajax_loader img{
-    width: 50px;
+.slogan h2{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 60px;
+    font-weight: 200;
 }
 
-.ajax_area{
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 40px;
-}
-
-.label{
-    margin: 5px;
-}
-
-.login_form{
-    background: #f8f8f8;
-    background: #f8f8f8;
-    padding: 25px;
-    border: 1px solid #EEE;
+.slogan h2 span{
+    font-size: 40px;
 }
