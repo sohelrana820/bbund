@@ -10,7 +10,7 @@ $app->get(
     '/'
     ,
     function () use ($app) {
-        $app->render('home.html');
+        $app->render('layout.html');
     }
 );
 
