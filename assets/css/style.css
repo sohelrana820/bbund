@@ -31,8 +31,9 @@ body{
     border-radius: 0px;
     box-shadow: none;
     color: #FFF;
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
 }
 
 .login_form .form-group{
@@ -68,4 +69,21 @@ body{
 
 .logo{
     height: 200px;
+}
+
+
+.login_form .form-control::-webkit-input-placeholder {
+    color: #FFF !important;
+}
+
+.login_form .form-control:-moz-placeholder { /* Firefox 18- */
+    color: #FFF !important;
+}
+
+.login_form .form-control::-moz-placeholder {  /* Firefox 19+ */
+    color: #FFF !important;
+}
+
+.login_form .form-control:-ms-input-placeholder {
+    color: #FFF !important;
 }

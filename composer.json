@@ -9,7 +9,7 @@
         "monolog/monolog": "1.*",
         "slim/slim": "2.*",
         "slim/views": "0.*",
-        "gabordemooij/redbean": "dev-master",
+        "illuminate/database": "*",
         "symfony/dom-crawler": "^2.7",
         "symfony/css-selector": "^2.7",
         "guzzlehttp/guzzle": "^6.1",

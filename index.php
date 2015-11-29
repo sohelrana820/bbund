@@ -14,4 +14,5 @@ $app->get(
     }
 );
 
+require "routers/users.php";
 $app->run();
