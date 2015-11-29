@@ -7,9 +7,21 @@ body{
     background: #483D8B;
 }
 
-
 .signin_page_bg{
     background: #483D8B;
+}
+
+.login_page{
+    margin-top: 100px;
+    color: #777;
+}
+
+.login_page a {
+    color: #7F6EE6;
+}
+
+.signin_btn:hover{
+    color: #FFF;
 }
 
 .login_form .form-control{
@@ -38,18 +50,22 @@ body{
 }
 
 
-.slogan{
+.logo_area{
     text-align: center;
     color: #FFF;
     margin-bottom: 70px;
 }
 
-.slogan h2{
+.logo_area h2{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 60px;
     font-weight: 200;
 }
 
-.slogan h2 span{
+.logo_area h2 span{
     font-size: 40px;
+}
+
+.logo{
+    height: 200px;
 }

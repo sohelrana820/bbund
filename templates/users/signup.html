@@ -1,33 +1,32 @@
 <div class="login_page" ng-controller="SignupController as SignupCtrl">
-
-    <br/><br/><br/><br/><br/><br/>
-    <div class="slogan">
-        <img src="assets/img/logo.png" height="200">
+    <div class="logo_area">
+        <img src="assets/img/logo.png" class="logo">
         <h2>bBund! <span>gather your resources</span></h2>
     </div>
     <div class="container margin-top-100">
         <div class="col-lg-offset-3 col-lg-6">
             <div class="login_form">
-                <form class="login_form">
+                <form name="signup" ng-submit="signupForm(user)">
                     <div class="form-group">
-                        <input type="email" class="form-control"  placeholder="Name">
+                        <input ng-model="user.name" type="text" class="form-control"  placeholder="Name">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control"  placeholder="Email">
+                        <input ng-model="user.email" type="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control"  placeholder="Password">
+                        <input ng-model="user.password" type="password" class="form-control"  placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control"  placeholder="Confirm Password">
+                        <input ng-model="user.cPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn-circle btn-circle-white text-uppercase">Signup</button>
+                    </div>
+                    <div class="form-group">
+                        <span class="pull-right">Already have account? <a href="#users/signin" class="signin_btn">Signin</a></span>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <a href="#users/signin">Signin</a>
 </div>
