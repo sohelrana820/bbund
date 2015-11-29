@@ -33,7 +33,6 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 
-
 $app = new \Slim\Slim(
     array(
         'templates.path' => APP_DIR . 'templates',

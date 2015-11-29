@@ -18,8 +18,9 @@
         "illuminate/events": "^5.1"
     },
     "autoload": {
-        "psr-0": {
-            "": "src/"
+        "psr-4": {
+            "Lib\\": "src/",
+            "Model\\": "model/"
         }
     }
 }
