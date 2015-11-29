@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="bBundApp">
 <head>
     <meta charset="UTF-8">
     <title>bBund</title>
@@ -15,33 +15,13 @@
     <script src="assets/js/toastr.min.js"></script>
     <script src="assets/js/ui-bootstrap-tpls-0.12.0.js"></script>
     <script src="assets/js/angular-route.js"></script>
+
+    <script src="angular/app.js"></script>
+
 </head>
 <body class="body_color">
 
-<div class="login_page">
-    <br/><br/><br/><br/><br/><br/>
-    <div class="slogan">
-        <img src="assets/img/logo.png" height="200">
-        <h2>bBund! <span>gather your resources</span></h2>
-    </div>
-    <div class="container margin-top-100">
-        <div class="col-lg-offset-3 col-lg-6">
-            <div class="login_form">
-                <form class="login_form">
-                    <div class="form-group">
-                        <input type="email" class="form-control"  placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control"  placeholder="Password">
-                    </div>
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn-circle btn-circle-white text-uppercase">Signin</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<div ng-view></div>
 
 </body>
 </html>
