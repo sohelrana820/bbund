@@ -1,0 +1,24 @@
+{
+    "name": "githib/sohelrana820",
+    "description": "This is test description",
+    "keywords": ["bookmark"],
+    "homepage": "https://github.com/sohelrana/pst-stack",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0",
+        "monolog/monolog": "1.*",
+        "slim/slim": "2.*",
+        "slim/views": "0.*",
+        "gabordemooij/redbean": "dev-master",
+        "symfony/dom-crawler": "^2.7",
+        "symfony/css-selector": "^2.7",
+        "guzzlehttp/guzzle": "^6.1",
+        "mandrill/mandrill": "dev-master",
+        "ircmaxell/password-compat": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}

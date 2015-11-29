@@ -1,0 +1,6 @@
+/vendor/
+tmp/*
+.DS_STORE
+/tmp/*
+/src/Config.php
+.idea/*
