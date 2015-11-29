@@ -2,8 +2,14 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.body_color{
+
+.signup_page_bg{
     background: #483D8B;
+}
+
+
+.signin_page_bg{
+    background: #C00;
 }
 
 .login_form .form-control{

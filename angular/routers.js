@@ -10,14 +10,5 @@ app.config(function($routeProvider) {
             controller  : 'HomeController'
         })
 
-        .when('/users/signin', {
-            templateUrl : 'templates/users/signin.html',
-            controller  : 'UsersController'
-        })
-
-        .when('/users/signup', {
-            templateUrl : 'templates/users/signup.html',
-            controller  : 'UsersController'
-        })
 
 });
