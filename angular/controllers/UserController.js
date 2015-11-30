@@ -35,6 +35,23 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
             });
     };
 
+    $scope.signupValidation = function(user) {
+
+        $http({
+            url: 'users/signup_validation',
+            method: "POST",
+            data: user,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+            .success(function (response, status, headers, config) {
+                console.log(response);
+            })
+            .error(function (response, status, headers, config) {
+                console.log(response);
+            });
+
+    }
+
 }]);
 
 app.controller('SigninController', ['$scope', '$filter', '$http', function($scope, $filter, $http){

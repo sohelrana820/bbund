@@ -16,4 +16,18 @@ $app->post(
         echo json_encode($data);
     }
 );
+
+
+$app->post(
+    '/users/signup_validation'
+    ,
+    function () use ($app) {
+            $data = json_decode(file_get_contents("php://input"));
+
+            $validation = new Lib\Validation();
+            $response = $validation->signupValidation($data);
+
+            echo json_encode($response);
+    }
+);
 ?>
