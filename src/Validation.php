@@ -15,29 +15,18 @@ class Validation {
      */
     public function signupValidation($fields = array())
     {
+        $errors = false;
+
         if(isset($fields->name) && $this->applyValidationRules('notEmpty', $fields->name) == false){
-            $response = array(
-                'code' => 0,
-                'message' => 'Sorry, name must be required'
-            );
-            return $response;
+            $errors['name'] = 'Sorry, name must be required';
         }
 
         if(isset($fields->email) && $this->applyValidationRules('email', $fields->email) == false){
-            $response = array(
-                'code' => 0,
-                'message' => 'Sorry, invalid email address'
-            );
-            return $response;
+            $errors['email'] = 'Sorry, Invalid email address';
         }
 
-        $response = array(
-            'code' => 1,
-            'message' => null
-        );
+        return $errors;
 
-
-        return $response;
         /**
          * TODO validation script should write in proper way
          */
