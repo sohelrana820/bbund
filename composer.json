@@ -15,7 +15,8 @@
         "guzzlehttp/guzzle": "^6.1",
         "mandrill/mandrill": "dev-master",
         "ircmaxell/password-compat": "dev-master",
-        "illuminate/events": "^5.1"
+        "illuminate/events": "^5.1",
+        "vlucas/valitron": "dev-master"
     },
     "autoload": {
         "psr-4": {

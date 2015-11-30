@@ -8,7 +8,7 @@
             <div class="login_form">
                 <form name="signup" ng-submit="signupForm(user)">
                     <div class="form-group">
-                        <input ng-model="user.name" type="text" class="form-control"  placeholder="Name">
+                        <input ng-model="user.name" ng-change type="text" class="form-control"  placeholder="Name">
                     </div>
                     <div class="form-group">
                         <input ng-model="user.email" type="email" class="form-control" placeholder="Email">
@@ -20,7 +20,7 @@
                         <input ng-model="user.cPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn-circle btn-circle-white text-uppercase">Signup</button>
+                        <button ng-disabled="disableSignupBtn" type="submit" class="btn-circle btn-circle-white text-uppercase">Signup</button>
                     </div>
                     <div class="form-group">
                         <span class="pull-right">Already have account? <a href="#users/signin" class="signin_btn">Signin</a></span>

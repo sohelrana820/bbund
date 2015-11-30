@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "871eda57edfed686ef4f89d0285d1660",
-    "content-hash": "ef112f7c3fb9ca051e9d89ce41a0f695",
+    "hash": "805c195d90c1c349a379bc5c8d1a157b",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1109,6 +1108,52 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2015-11-18 13:41:01"
+        },
+        {
+            "name": "vlucas/valitron",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/valitron.git",
+                "reference": "a06309ce75faf394cad7b7d9a5de4831103b4b8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/valitron/zipball/a06309ce75faf394cad7b7d9a5de4831103b4b8e",
+                "reference": "a06309ce75faf394cad7b7d9a5de4831103b4b8e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Valitron": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "http://www.vancelucas.com"
+                }
+            ],
+            "description": "Simple, elegant, stand-alone validation library with NO dependencies",
+            "homepage": "http://github.com/vlucas/valitron",
+            "keywords": [
+                "valid",
+                "validation",
+                "validator"
+            ],
+            "time": "2015-11-24 17:20:47"
         }
     ],
     "packages-dev": [],
@@ -1116,7 +1161,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mandrill/mandrill": 20,
-        "ircmaxell/password-compat": 20
+        "ircmaxell/password-compat": 20,
+        "vlucas/valitron": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

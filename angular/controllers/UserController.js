@@ -14,10 +14,12 @@ app.config(function($routeProvider) {
 });
 
 app.controller('SignupController', ['$scope', '$filter', '$http', function($scope, $filter, $http){
+
     $scope.pageClass = 'signup_page_bg';
 
+    $scope.disableSignupBtn = true;
+
     $scope.signupForm = function(user) {
-        console.log(user);
 
         $http({
             url: 'users',
