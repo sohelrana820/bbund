@@ -91,3 +91,13 @@ body{
 .login_form .error{
     color: #a94442;
 }
+
+.alert {
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+}

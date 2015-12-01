@@ -33,7 +33,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
         })
             .success(function (response, status, headers, config) {
                 flash.setMessage('Your account has been created');
-                flash.setMessageType('Error');
+                flash.setMessageType('Success');
                 $location.path('/users/signin');
             })
             .error(function (response, status, headers, config) {
@@ -42,7 +42,6 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
     };
 
     $scope.signupValidation = function(user) {
-
         $http({
             url: 'users/signup_validation',
             method: "POST",
@@ -74,28 +73,16 @@ app.controller('SigninController', ['$scope', '$filter', '$http', 'flash', funct
 }]);
 
 
-app.factory("flash", function($rootScope) {
-    var queue = [];
-    var currentMessage = "";
-    var currentMessageType = "";
 
-    $rootScope.$on("$routeChangeSuccess", function() {
-        currentMessage = queue.shift() || "";
-        currentMessageType = queue.shift() || "";
-    });
 
+
+app.directive("notification", function() {
     return {
-        setMessageType: function(type) {
-            queue.push(type);
+        restrict: 'E',
+        scope: {
+            message: '@',
+            type: '@'
         },
-        getMessageType: function() {
-            return currentMessageType;
-        },
-        setMessage: function(message) {
-            queue.push(message);
-        },
-        getMessage: function() {
-            return currentMessage;
-        }
-    };
+        templateUrl : 'templates/directives/flash_message.html',
+    }
 });
