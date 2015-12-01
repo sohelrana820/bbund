@@ -13,7 +13,9 @@ app.config(function($routeProvider) {
 
 });
 
-app.controller('SignupController', ['$scope', '$filter', '$http', function($scope, $filter, $http){
+app.controller('SignupController', ['$scope', '$filter', '$http', '$location', 'flash', function($scope, $filter, $http, $location, flash){
+
+    $scope.flash = flash;
 
     $scope.pageClass = 'signup_page_bg';
 
@@ -30,7 +32,9 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
             .success(function (response, status, headers, config) {
-                toastr.success('Tag has been saved successfully');
+                flash.setMessage('Your account has been created');
+                flash.setMessageType('Error');
+                $location.path('/users/signin');
             })
             .error(function (response, status, headers, config) {
                 toastr.error('Sorry, something went wrong');
@@ -63,6 +67,35 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
 
 }]);
 
-app.controller('SigninController', ['$scope', '$filter', '$http', function($scope, $filter, $http){
+
+app.controller('SigninController', ['$scope', '$filter', '$http', 'flash', function($scope, $filter, $http, flash){
     $scope.pageClass = 'signin_page_bg';
+    $scope.flash = flash;
 }]);
+
+
+app.factory("flash", function($rootScope) {
+    var queue = [];
+    var currentMessage = "";
+    var currentMessageType = "";
+
+    $rootScope.$on("$routeChangeSuccess", function() {
+        currentMessage = queue.shift() || "";
+        currentMessageType = queue.shift() || "";
+    });
+
+    return {
+        setMessageType: function(type) {
+            queue.push(type);
+        },
+        getMessageType: function() {
+            return currentMessageType;
+        },
+        setMessage: function(message) {
+            queue.push(message);
+        },
+        getMessage: function() {
+            return currentMessage;
+        }
+    };
+});
