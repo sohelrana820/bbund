@@ -45,9 +45,15 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
             data: user,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
-            .success(function (response, status, headers, config) {
-                console.log(response);
-                $scope.errors = response;
+            .success(function (errors, status, headers, config) {
+                $scope.errors = errors;
+                if(Object.keys(user).length == 4 && errors == 'null')
+                {
+                    $scope.disableSignupBtn = false;
+                }
+                else{
+                    $scope.disableSignupBtn = true;
+                }
             })
             .error(function (response, status, headers, config) {
                 console.log(response);
