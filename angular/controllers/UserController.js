@@ -17,6 +17,8 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
 
     $scope.pageClass = 'signup_page_bg';
 
+    $scope.errors = null;
+
     $scope.disableSignupBtn = true;
 
     $scope.signupForm = function(user) {
@@ -45,6 +47,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', function($scop
         })
             .success(function (response, status, headers, config) {
                 console.log(response);
+                $scope.errors = response;
             })
             .error(function (response, status, headers, config) {
                 console.log(response);

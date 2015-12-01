@@ -15,14 +15,30 @@ class Validation {
      */
     public function signupValidation($fields = array())
     {
-        $errors = false;
+        $errors = null;
 
         if(isset($fields->name) && $this->applyValidationRules('notEmpty', $fields->name) == false){
-            $errors['name'] = 'Sorry, name must be required';
+            $errors['name'] = 'Name must be required';
+        }
+
+        if(isset($fields->email) && $this->applyValidationRules('notEmpty', $fields->email) == false){
+            $errors['email'] = 'Email must be required';
         }
 
         if(isset($fields->email) && $this->applyValidationRules('email', $fields->email) == false){
-            $errors['email'] = 'Sorry, Invalid email address';
+            $errors['email'] = 'Please provide valid email address';
+        }
+
+        if(isset($fields->password) && $this->applyValidationRules('notEmpty', $fields->password) == false){
+            $errors['password'] = 'Password must be required';
+        }
+
+        if(isset($fields->cPassword) && $this->applyValidationRules('notEmpty', $fields->cPassword) == false){
+            $errors['cPassword'] = 'Confirm password must be required';
+        }
+
+        if(isset($fields->cPassword) && $this->applyValidationRules('matchPassword', $fields->cPassword, $fields) == false){
+            $errors['cPassword'] = 'Password and confirm password does not matched';
         }
 
         return $errors;
@@ -62,12 +78,13 @@ class Validation {
             }
         }
     }
+
     /**
      * @param $rule
      * @param $value
      * @return bool
      */
-    private function applyValidationRules($rule, $value)
+    private function applyValidationRules($rule, $value, $fields = array())
     {
         /**
          * @TODO all validation script should be written here.
@@ -93,6 +110,16 @@ class Validation {
 
         elseif($rule == 'isUnique'){
             return true;
+        }
+
+        elseif($rule == 'matchPassword'){
+
+            if(isset($fields->password) && $value == $fields->password)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         else{
