@@ -2,7 +2,7 @@
 
 namespace Lib;
 
-
+use Model\Users;
 use Valitron\Validator;
 
 class Validation {
@@ -27,6 +27,16 @@ class Validation {
 
         if(isset($fields->email) && $this->applyValidationRules('email', $fields->email) == false){
             $errors['email'] = 'Please provide valid email address';
+        }
+
+        if(isset($fields->email) && !isset($errors['email'])){
+            $user = new Users();
+            $isExist = $user->whereEmail($fields->email)->first();
+
+            if($isExist)
+            {
+                $errors['email'] = 'This email is already taken';
+            }
         }
 
         if(isset($fields->password) && $this->applyValidationRules('notEmpty', $fields->password) == false){
@@ -106,10 +116,6 @@ class Validation {
                 return true;
             }
             return false;
-        }
-
-        elseif($rule == 'isUnique'){
-            return true;
         }
 
         elseif($rule == 'matchPassword'){
