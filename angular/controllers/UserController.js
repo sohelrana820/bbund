@@ -13,15 +13,15 @@ app.config(function($routeProvider) {
 
 });
 
-app.controller('SignupController', ['$scope', '$filter', '$http', '$location', 'flash', function($scope, $filter, $http, $location, flash){
+app.controller('SignupController', ['$scope', '$filter', '$http', '$location', 'flashMessage', function($scope, $filter, $http, $location, flashMessage){
 
-    $scope.flash = flash;
 
     $scope.pageClass = 'signup_page_bg';
 
     $scope.errors = null;
 
     $scope.disableSignupBtn = true;
+
 
     $scope.signupForm = function(user) {
 
@@ -32,8 +32,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
             .success(function (response, status, headers, config) {
-                flash.setMessage('Your account has been created');
-                flash.setMessageType('Success');
+                flashMessage.setFlash('Your account has been created');
                 $location.path('/users/signin');
             })
             .error(function (response, status, headers, config) {
@@ -42,6 +41,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
     };
 
     $scope.signupValidation = function(user) {
+
         $http({
             url: 'users/signup_validation',
             method: "POST",
@@ -57,6 +57,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
                 else{
                     $scope.disableSignupBtn = true;
                 }
+
             })
             .error(function (response, status, headers, config) {
                 console.log(response);
@@ -67,22 +68,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
 }]);
 
 
-app.controller('SigninController', ['$scope', '$filter', '$http', 'flash', function($scope, $filter, $http, flash){
+app.controller('SigninController', ['$scope', '$filter', '$http', 'flashMessage', function($scope, $filter, $http, flashMessage){
     $scope.pageClass = 'signin_page_bg';
-    $scope.flash = flash;
+    flashMessage.getFlash();
 }]);
-
-
-
-
-
-app.directive("notification", function() {
-    return {
-        restrict: 'E',
-        scope: {
-            message: '@',
-            type: '@'
-        },
-        templateUrl : 'templates/directives/flash_message.html',
-    }
-});

@@ -1,25 +1,38 @@
-app.factory("flash", function($rootScope) {
-    var queue = [];
-    var currentMessage = "";
-    var currentMessageType = "";
 
-    $rootScope.$on("$routeChangeSuccess", function() {
-        currentMessage = queue.shift() || "";
-        currentMessageType = queue.shift() || "";
-    });
+app.factory('flashMessage', function ($rootScope, $cookies) {
 
-    return {
-        setMessageType: function(type) {
-            queue.push(type);
-        },
-        getMessageType: function() {
-            return currentMessageType;
-        },
-        setMessage: function(message) {
-            queue.push(message);
-        },
-        getMessage: function() {
-            return currentMessage;
+    var factory = {};
+
+    factory.setFlash = function (message, type) {
+        $cookies.message = message;
+        $cookies.type = type;
+    }
+
+    factory.getFlash = function () {
+        type = $cookies.type;
+
+        if(type != 'null' && $cookies.message != 'null'){
+            if (type == 'error') {
+                toastr.error($cookies.message);
+            }
+
+            else if (type == 'success') {
+                toastr.success($cookies.message);
+            }
+
+            else if (type == 'warning') {
+                toastr.warning($cookies.message);
+            }
+
+            else {
+                toastr.info($cookies.message);
+            }
+
+            $cookies.message = null;
+            $cookies.type = null;
         }
-    };
+    }
+
+    return factory;
+
 });
