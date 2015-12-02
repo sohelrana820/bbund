@@ -1,4 +1,3 @@
-
 app.factory('flashMessage', function ($rootScope, $cookies) {
 
     var factory = {};
@@ -11,7 +10,9 @@ app.factory('flashMessage', function ($rootScope, $cookies) {
     factory.getFlash = function () {
         type = $cookies.type;
 
-        if(type != 'null' && $cookies.message != 'null'){
+        console.log($cookies.message);
+
+        if ($cookies.message != 'null') {
             if (type == 'error') {
                 toastr.error($cookies.message);
             }
@@ -27,10 +28,8 @@ app.factory('flashMessage', function ($rootScope, $cookies) {
             else {
                 toastr.info($cookies.message);
             }
-
-            $cookies.message = null;
-            $cookies.type = null;
         }
+        $cookies.message = null;
     }
 
     return factory;
