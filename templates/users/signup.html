@@ -22,10 +22,12 @@
                         <input type="email" name="email" class="form-control" placeholder="Email Address"
                                ng-model="user.email"
                                email
+                               unique-email
                                required>
                         <div class="help-block" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
                             <p ng-message="required">Email address must be required.</p>
                             <p ng-message="email">Invalid email address.</p>
+                            <p ng-message="uniqueEmail">This email is already taken</p>
                         </div>
                     </div>
 
@@ -48,7 +50,7 @@
                                required>
                         <div class="help-block" ng-messages="signupForm.cPassword.$error" ng-if="signupForm.cPassword.$touched">
                             <p ng-message="required">Confirm password must be required.</p>
-                            <div ng-message="passwordMatch">Password and confirm password not matched.</div>
+                            <p ng-message="passwordMatch">Password and confirm password not matched.</p>
                         </div>
                     </div>
 

@@ -19,15 +19,14 @@ $app->post(
 
 
 $app->post(
-    '/users/signup_validation'
+    '/users/is_email_unique'
     ,
     function () use ($app) {
             $data = json_decode(file_get_contents("php://input"));
 
-            $validation = new Lib\Validation();
-            $response = $validation->signupValidation($data);
-
-            echo json_encode($response);
+        $user = new Users();
+        $isExist = $user->whereEmail($data->email)->first();
+        echo json_encode($isExist);
     }
 );
 ?>

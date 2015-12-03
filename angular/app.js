@@ -75,16 +75,30 @@ app.directive('uniqueEmail', function($http, $q) {
         return {
             require : 'ngModel',
             link : function($scope, element, attrs, ngModel) {
-                ngModel.$asyncValidators.uniqueEmail = function(modelValue, viewValue) {
+                ngModel.$validators.uniqueEmail = function(modelValue, viewValue) {
                     var email = modelValue || viewValue;
-                    return $http.post('/api/unique-email', {email: email}).then(function(res) {
-                        if (res.data.exists) {
-                            return $q.reject();
-                        }
-                        return $q.when();
-                    });
-                }; // end async
-            } // end link
-        }; // end return
+                    var isUnique = true;
+
+                    if(email != 'undefined'){
+                        $http({
+                            url: 'users/is_email_unique',
+                            method: "POST",
+                            data: {email: email},
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        })
+                            .success(function (response, status, headers, config) {
+                                console.log(response);
+                                if(response == null)
+                                {
+                                    isUnique = false;
+                                }
+                            })
+                        return isUnique;
+                    }
+
+
+                };
+            }
+        };
 
     });
