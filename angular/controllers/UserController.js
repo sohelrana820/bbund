@@ -17,11 +17,7 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
 
 
     $scope.pageClass = 'signup_page_bg';
-
     $scope.errors = null;
-
-    $scope.disableSignupBtn = true;
-
 
     $scope.signupForm = function(user) {
 
@@ -51,14 +47,6 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
         })
             .success(function (errors, status, headers, config) {
                 $scope.errors = errors;
-                if(Object.keys(user).length == 4 && errors == 'null')
-                {
-                    $scope.disableSignupBtn = false;
-                }
-                else{
-                    $scope.disableSignupBtn = true;
-                }
-
             })
             .error(function (response, status, headers, config) {
                 console.log(response);
