@@ -41,8 +41,8 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
     };
 
     $scope.signupValidation = function(user) {
-        flashMessage.setFlash('Your account has been created');
-        $location.path('/users/signin');
+        //flashMessage.setFlash('Your account has been created');
+        //$location.path('/users/signin');
         $http({
             url: 'users/signup_validation',
             method: "POST",
