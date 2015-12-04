@@ -69,28 +69,11 @@ app.directive('uniqueEmail', function($http, $q) {
         link : function($scope, element, attrs, ngModel) {
             ngModel.$validators.uniqueEmail = function(modelValue, viewValue) {
                 var email = modelValue || viewValue;
-                var isUnique = true;
-
-                if(email != 'undefined'){
-                    $http({
-                        url: 'users/is_email_unique',
-                        method: "POST",
-                        data: {email: email},
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
-                        .success(function (response, status, headers, config) {
-                            console.log(response);
-                            if(response == null)
-                            {
-                                isUnique = false;
-                            }
-                        })
-                    return isUnique;
+                if (typeof email != 'undefined'){
+                    // Here need t write script for checking the duplicate email.
                 }
-
-
+                return true;
             };
         }
     };
-
 });
