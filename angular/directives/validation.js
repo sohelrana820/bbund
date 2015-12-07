@@ -60,37 +60,24 @@ app.directive('validatePasswordCharacters', function() {
             };
         } // end link
     }; // end return
-
 })
 
 app.directive('uniqueEmail', function($http, $q) {
     return {
         require : 'ngModel',
         link : function($scope, element, attrs, ngModel) {
-            ngModel.$validators.uniqueEmail = function(modelValue, viewValue) {
+            ngModel.$asyncValidators.uniqueEmail = function(modelValue, viewValue) {
                 var email = modelValue || viewValue;
-                var isUnique = true;
-
-                if(email && email != 'undefined'){
-                    $http({
-                        url: 'users/is_email_unique',
-                        method: "POST",
-                        data: {email: email},
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
-                        .success(function (response, status, headers, config) {
-                            console.log(response);
-                            if(response == null)
-                            {
-                                isUnique = false;
-                            }
-                        })
-                    return isUnique;
-                }
-
-
+                return $http.post('users/is_email_unique', {email: email}).then(function(res) {
+                    if (res.data != 'null') {
+                        return $q.reject();
+                    }
+                    return $q.when();
+                });
             };
         }
     };
-
 });
+
+
+
