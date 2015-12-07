@@ -71,7 +71,7 @@ app.directive('uniqueEmail', function($http, $q) {
                 var email = modelValue || viewValue;
                 var isUnique = true;
 
-                if(email != 'undefined'){
+                if(email && email != 'undefined'){
                     $http({
                         url: 'users/is_email_unique',
                         method: "POST",
