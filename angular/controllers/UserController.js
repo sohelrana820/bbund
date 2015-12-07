@@ -15,12 +15,13 @@ app.config(function($routeProvider) {
 
 app.controller('SignupController', ['$scope', '$filter', '$http', '$location', 'flashMessage', function($scope, $filter, $http, $location, flashMessage){
 
+    flashMessage.setFlash('Your account has been created');
+    $location.path('/users/signin');
 
     $scope.pageClass = 'signup_page_bg';
     $scope.errors = null;
 
     $scope.signupForm = function(user) {
-
         $http({
             url: 'users',
             method: "POST",
@@ -37,8 +38,6 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
     };
 
     $scope.signupValidation = function(user) {
-        //flashMessage.setFlash('Your account has been created');
-        //$location.path('/users/signin');
         $http({
             url: 'users/signup_validation',
             method: "POST",
@@ -59,7 +58,9 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
 
 app.controller('SigninController', ['$scope', '$filter', '$http', 'flashMessage', function($scope, $filter, $http, flashMessage){
     $scope.pageClass = 'signin_page_bg';
+
     flashMessage.getFlash();
+
 
     console.log($scope.pageClass);
 }]);
