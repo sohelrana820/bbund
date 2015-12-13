@@ -26,12 +26,13 @@
 
     <script src="angular/controllers/UserController.js"></script>
 
+    <script src="angular/factories/auth.js"></script>
     <script src="angular/factories/flash.js"></script>
 
     <script src="angular/directives/validation.js"></script>
 
 </head>
-<body class="{{ pageClass }}" ng-view>>
+<body ng-controller="ApplicationController" class="{{ pageClass }}" ng-view>
 
 </body>
 </html>

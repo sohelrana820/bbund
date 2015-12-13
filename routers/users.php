@@ -17,13 +17,25 @@ $app->post(
     }
 );
 
+$app->post(
+    '/users/login'
+    ,
+    function () use ($app) {
+        $data = json_decode(file_get_contents("php://input"));
+        $user = new Users();
+        $result = $user->where('email', $data->email)
+            /*->where('password', password_hash($data->password, PASSWORD_BCRYPT))*/
+            ->first();
+        echo json_encode($result);
+    }
+);
+
 
 $app->post(
     '/users/is_email_unique'
     ,
     function () use ($app) {
-            $data = json_decode(file_get_contents("php://input"));
-
+        $data = json_decode(file_get_contents("php://input"));
         $user = new Users();
         $isExist = $user->whereEmail($data->email)->first();
         echo json_encode($isExist);
