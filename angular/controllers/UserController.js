@@ -15,12 +15,10 @@ app.config(function($routeProvider) {
 
 app.controller('SignupController', ['$scope', '$filter', '$http', '$location', 'flashMessage', function($scope, $filter, $http, $location, flashMessage){
 
-
     $scope.pageClass = 'signup_page_bg';
     $scope.errors = null;
 
     $scope.signupForm = function(user) {
-
         $http({
             url: 'users',
             method: "POST",
@@ -37,8 +35,6 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
     };
 
     $scope.signupValidation = function(user) {
-        //flashMessage.setFlash('Your account has been created');
-        //$location.path('/users/signin');
         $http({
             url: 'users/signup_validation',
             method: "POST",
@@ -57,9 +53,19 @@ app.controller('SignupController', ['$scope', '$filter', '$http', '$location', '
 }]);
 
 
-app.controller('SigninController', ['$scope', '$filter', '$http', 'flashMessage', function($scope, $filter, $http, flashMessage){
+app.controller('SigninController', ['$rootScope', '$scope', '$filter', '$http', 'flashMessage', 'AuthService', 'AUTH_EVENTS', function($rootScope, $scope, $filter, $http, flashMessage, AuthService, AUTH_EVENTS){
     $scope.pageClass = 'signin_page_bg';
     flashMessage.getFlash();
 
-    console.log($scope.pageClass);
+    $scope.signinForm = function (credentials) {
+        console.log(credentials);
+        AuthService.login(credentials).then(function (user) {
+            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+            $scope.setCurrentUser(user);
+        }, function () {
+            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        });
+    };
+
 }]);
+

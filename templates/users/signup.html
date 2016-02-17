@@ -7,13 +7,13 @@
     <div class="container margin-top-100">
         <div class="col-lg-offset-3 col-lg-6">
             <div class="login_form">
-                <form name="signupForm" ng-submit="signupForm(user)">
+                <form name="signup" ng-submit="signupForm(user)">
 
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Name"
                                ng-model="user.name"
                                required>
-                        <div class="help-block" ng-messages="signupForm.name.$error" ng-if="signupForm.name.$touched">
+                        <div class="help-block" ng-messages="signup.name.$error" ng-if="signup.name.$touched">
                             <p ng-message="required">Name must be required.</p>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                                email
                                unique-email
                                required>
-                        <div class="help-block" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
+                        <div class="help-block" ng-messages="signup.email.$error" ng-if="signup.email.$touched">
                             <p ng-message="required">Email address must be required.</p>
                             <p ng-message="email">Invalid email address.</p>
                             <p ng-message="uniqueEmail">This email is already taken</p>
@@ -37,7 +37,7 @@
                                ng-model="user.password"
                                ng-minlength="6"
                                required>
-                        <div class="help-block" ng-messages="signupForm.password.$error" ng-if="signupForm.password.$touched">
+                        <div class="help-block" ng-messages="signup.password.$error" ng-if="signup.password.$touched">
                             <p ng-message="minlength">Password must be at least 6 character.</p>
                             <p ng-message="required">Password must be required.</p>
                         </div>
@@ -48,7 +48,7 @@
                                ng-model="cPassword"
                                match-password="password"
                                required>
-                        <div class="help-block" ng-messages="signupForm.cPassword.$error" ng-if="signupForm.cPassword.$touched">
+                        <div class="help-block" ng-messages="signup.cPassword.$error" ng-if="signup.cPassword.$touched">
                             <p ng-message="required">Confirm password must be required.</p>
                             <p ng-message="passwordMatch">Password and confirm password not matched.</p>
                         </div>
@@ -56,7 +56,7 @@
 
 
                     <div class="form-group text-center">
-                        <button  type="submit" class="btn-circle btn-circle-white text-uppercase" ng-disabled="signupForm.$invalid">Signup</button>
+                        <button ng-disabled="signup.$invalid" type="submit" class="btn-circle btn-circle-white text-uppercase">Signup</button>
                     </div>
                     <div class="form-group">
                         <span class="pull-right">Already have account? <a href="#users/signin" class="signin_btn">Signin</a></span>

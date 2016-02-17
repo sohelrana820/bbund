@@ -60,20 +60,24 @@ app.directive('validatePasswordCharacters', function() {
             };
         } // end link
     }; // end return
-
 })
 
 app.directive('uniqueEmail', function($http, $q) {
     return {
         require : 'ngModel',
         link : function($scope, element, attrs, ngModel) {
-            ngModel.$validators.uniqueEmail = function(modelValue, viewValue) {
+            ngModel.$asyncValidators.uniqueEmail = function(modelValue, viewValue) {
                 var email = modelValue || viewValue;
-                if (typeof email != 'undefined'){
-                    // Here need t write script for checking the duplicate email.
-                }
-                return true;
+                return $http.post('users/is_email_unique', {email: email}).then(function(res) {
+                    if (res.data != 'null') {
+                        return $q.reject();
+                    }
+                    return $q.when();
+                });
             };
         }
     };
 });
+
+
+

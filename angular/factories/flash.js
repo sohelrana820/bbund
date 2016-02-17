@@ -8,30 +8,30 @@ app.factory('flashMessage', function ($rootScope, $cookies) {
     }
 
     factory.getFlash = function () {
+
         type = $cookies.type;
+        message = $cookies.message;
 
-        console.log($cookies.message);
-
-        if ($cookies.message != 'null') {
+        if (message) {
             if (type == 'error') {
-                toastr.error($cookies.message);
+                toastr.error(message);
             }
 
             else if (type == 'success') {
-                toastr.success($cookies.message);
+                toastr.success(message);
             }
 
             else if (type == 'warning') {
-                toastr.warning($cookies.message);
+                toastr.warning(message);
             }
 
             else {
-                toastr.info($cookies.message);
+                toastr.info(message);
             }
         }
-        $cookies.message = null;
+
+        $cookies.type = '';
+        $cookies.message = '';
     }
-
     return factory;
-
 });
